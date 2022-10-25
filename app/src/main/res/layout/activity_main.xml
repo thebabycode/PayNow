@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner_view"
+        android:id="@+id/scannerview"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         tools:ignore="MissingClass"
@@ -22,11 +22,12 @@
         android:id="@+id/tv_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text=""
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_below="@+id/scanner_view" />
+        android:textSize="20dp"
+        android:layout_below="@+id/scannerview" />
 
 
 </RelativeLayout>
