@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +26,6 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
     CodeScanner codeScanner;
     CodeScannerView scannView ;
-    TextView resultData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         scannView = findViewById(R.id.scannerview);
         codeScanner = new CodeScanner(this, scannView);
-        resultData = findViewById(R.id.tv_textview);
 
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
@@ -42,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                        resultData.setText(result.getText());
+                        String code = result.getText();
+                        Intent i = new Intent(MainActivity.this, sendSMS.class);
+                        i.putExtra("msg", "QR = " + code);
+                        startActivity(i);
                     }
                 });
             }

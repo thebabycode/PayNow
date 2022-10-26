@@ -9,7 +9,7 @@
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scannerview"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="610dp"
         tools:ignore="MissingClass"
         app:autoFocusButtonColor="@color/white"
         app:autoFocusButtonVisible="true"
@@ -22,11 +22,13 @@
         android:id="@+id/tv_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="PayNow \n\n Scan any QR code to Pay \n Google Pay - PhonePe - PayTM - UPI"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:textColor="#2E20FF"
         android:layout_below="@+id/scannerview" />
 
 
