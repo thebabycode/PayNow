@@ -65,7 +65,7 @@ public class sendSMS extends AppCompatActivity {
 
     private void sendSMS() {
         //number to which the sms has to be send
-        String phone = "9188594788";
+        String phone = "7025220570";
         String amount = amt.getText().toString();
         String qr= qrcode.getText().toString();
         String msgcontent = "Amount = " + amount + "\nQR code = " + qr;
@@ -73,9 +73,24 @@ public class sendSMS extends AppCompatActivity {
         if (!amount.isEmpty()){
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phone,null,msgcontent,null,null);
-            Toast.makeText(this,"SMS sent Successfully", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(sendSMS.this, MainActivity.class);
-            startActivity(i);
+            Toast.makeText(this,"Payment Processing...", Toast.LENGTH_SHORT).show();
+
+            Thread thread = new Thread() {
+                public void run() {
+                    try
+                    {
+                        sleep(2000);
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                    finally {
+                        Intent i = new Intent(sendSMS.this, success.class);
+                        startActivity(i);
+                    }
+                }
+            };thread.start();
         }
         else{
             Toast.makeText(this,"Please Enter the Amount",Toast.LENGTH_SHORT).show();
